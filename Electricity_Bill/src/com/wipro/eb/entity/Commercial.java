@@ -11,18 +11,21 @@ public class Commercial extends Connection
 		units=currentReading-previousReading;
 		double bill=0.0f;
 		if(units<51)
-			bill=units*5.2;
+			bill=units*slabs[0];
 		else if(units>50&&units<101)
-			bill=(units-50)*6.8+260;
+			bill=(units-50)*slabs[1]+50*slabs[0];
 		else
-			bill=(units-100)*8.3+600;
+			bill=(units-100)*slabs[2]+50*slabs[1]+50*slabs[0];
 		if(bill>=10000)
 			bill+=bill*0.09;
 		else if(bill>=5000)
 			bill+=bill*0.06;
 		else
 			bill+=bill*0.02;
-		return (float)bill;	
+		return (float)bill;
+
+		
+
 	}
 
 }
